@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { removeArrayItem } from 'ionic-angular/umd/util/util';
 import { ToastController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+
 
 @Component({
   selector: 'page-home',
@@ -26,7 +28,7 @@ export class HomePage {
     },
   ];
 
-  constructor(public navCtrl: NavController, public toastController: ToastController) {
+  constructor(public navCtrl: NavController, public toastController: ToastController,public alertController: AlertController) {
 
   }
     removeItem(item) {
@@ -36,6 +38,56 @@ export class HomePage {
         duration: 3000
       });
       toast.present();
+    }
+      addItem() {
+        console.log("Adding Item");
+        this.showAddItemPrompt();
+      }
+
+      showAddItemPrompt() {
+        let alert = this.alertController.create({
+          title: 'Add Item',
+          message: "Enter an Item",
+          inputs: [
+            {
+              name: 'name',
+              placeholder: 'Grocery Item Name'
+            },
+            {
+              name: 'quantity',
+              placeholder: 'Quantity',
+              
+            }
+          ],
+          buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              handler: data => {
+                console.log('Cancel clicked');
+              }
+            },
+            {
+              text: 'Save',
+              handler: item => {
+              console.log("Saved CLick",item);
+              this.items.push(item);
+
+
+
+                // if (item.isValid(item.name, item.quantity)) {
+                //   // logged in!
+                // } else {
+                //   // invalid login
+                //   return false;
+                
+              }
+            }
+          ]
+        });
+        alert.present();
+      }
+
    }
 
-}
+
