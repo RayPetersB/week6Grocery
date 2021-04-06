@@ -31,13 +31,17 @@ export class HomePage {
   constructor(public navCtrl: NavController, public toastController: ToastController,public alertController: AlertController) {
 
   }
-    removeItem(item) {
-      console.log("Removing Item - ", item);
+    removeItem(item, index) {
+      console.log("Removing Item - ", item, index);
       const toast = this.toastController.create({
-        message: 'Removing Item - .' + item.name + "...",
+        message: 'Removing Item - .' + index + "...",
         duration: 3000
       });
       toast.present();
+
+      this.items.splice(index,1) 
+
+
     }
       addItem() {
         console.log("Adding Item");
