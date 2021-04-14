@@ -43,6 +43,19 @@ export class HomePage {
 
 
     }
+
+
+
+    editItem(item, index) {
+      console.log("Editing Item - ", item, index);
+      const toast = this.toastController.create({
+        message: 'Editing Item - .' + index + "...",
+        duration: 3000
+      });
+      toast.present();
+
+
+    }
       addItem() {
         console.log("Adding Item");
         this.showAddItemPrompt();
