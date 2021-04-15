@@ -14,7 +14,7 @@ import { InputDialogServiceProvider } from '../../providers/input-dialog-service
 })
 export class HomePage {
 
-  title = "Grocery List"
+  title =  "Grocery List"
 
 
 
