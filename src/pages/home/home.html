@@ -5,8 +5,8 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to My First Grocery App!</h2>
-  <p>
+  <h2 class= "welcome">Welcome to My First Grocery App!</h2>
+  <!-- <p>
     Pizza - $3.00
   </p>
 
@@ -24,10 +24,10 @@
 
   <p>
     Take a look at these Groceries!
-  </p>
+  </p> -->
 
 
-  <h3 text-center *ngIf="loadItems().length === 0">
+  <h3 class="no-item" text-center *ngIf="loadItems().length === 0">
     No Item available on the list!
 
 
@@ -37,8 +37,10 @@
     <ion-item-sliding *ngFor="let item of loadItems(); let i = index">
       <ion-item>
         <h2>{{item.name}}</h2>
+
         <p>{{item.quantity}}</p>
       </ion-item>
+      
       <ion-item-options>
 
         <button (click)="removeItem(item, i)" ion-button color="secondary" icon-start>
@@ -57,6 +59,7 @@
   </ion-list>
 
 
+
   <ion-fab bottom right>
     <button (click)="addItem()" ion-fab mini>
       <ion-icon name="add"></ion-icon>
@@ -64,3 +67,5 @@
   </ion-fab>
 
 </ion-content>
+
+

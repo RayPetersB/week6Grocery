@@ -1,3 +1,18 @@
 page-home {
 
+    h3.no-item{
+        color:map-get($colors,navy  );
+        background-color: lightgrey;
+    }
+
+        
+    h2.welcome{
+        color:map-get($colors,"secondary"  );
+        background-color: navy;
+    }
+
+        
+
+
+
 }
