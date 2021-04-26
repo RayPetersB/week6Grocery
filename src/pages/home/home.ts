@@ -65,6 +65,7 @@ ionViewDidload() {
 
     let message =  "Grocery Item - Name:" + item.name + " - Quantity " + item.quantity;
     let subject = "Shared via Groceries app";
+    
     this.socialSharing.share(message, subject).then(() => {
       // Sharing via email is possible
       console.log("Shared Successfully!");

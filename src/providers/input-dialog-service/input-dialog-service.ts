@@ -49,14 +49,16 @@ export class InputDialogServiceProvider {
         },
         {
           text: 'Save',
-          handler: item => {
+          handler: data => {
             console.log("Saved CLick", item);
             if (index !== undefined) {
+              item.name = data.name;
+              item.quantity = data.quantity;
               this.dataService.editItem(item, index);
 
             }
             else {
-              this.dataService.addItem(item);
+              this.dataService.addItem(data);
 
             }
 
