@@ -48,7 +48,7 @@ export class GroceriesServiceProvider {
     let errMsg: string;
     if (error instanceof Response) {
       const err = error || " ";
-      errMsg = '${error.status} - ${error.statusText || " "} ${err}';
+      errMsg = `${error.status} - ${error.statusText || " "} ${err}`;
     } else {
       errMsg = error.message ? error.message : error.toString();
     }
