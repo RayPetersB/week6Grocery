@@ -16,26 +16,40 @@ export class HomePage {
 
   title =  "Grocery List"
 
+  items = [];
+  errorMessage: string;
+
 
 
   constructor( public navCtrl: NavController, public toastController: ToastController, public alertController: AlertController, public dataService: GroceriesServiceProvider, public inputDialogService: InputDialogServiceProvider,public socialSharing: SocialSharing) {
-
+    dataService.dataChanged$.subscribe((dataChanged: boolean) => {
+      this.loadItems();
+    });
   }
+
+ionViewDidload() {
+  this.loadItems();
+}
 
   loadItems() {
-    return this.dataService.getItems();
+    return this.dataService.getItems()
+    .subscribe(
+      items => this.items = items,
+      error => this. errorMessage= <any>error);
+    
 
   }
 
-  removeItem(item, index) {
-    console.log("Removing Item - ", item, index);
-    const toast = this.toastController.create({
-      message: 'Removing Item - .' + index + "...",
-      duration: 3000
-    });
-    toast.present();
+  removeItem(id) {
+    this.dataService.removeItem(id);
+  //  console.log("Removing Item - ", item, index);
+    //const toast = this.toastController.create({
+      //message: 'Removing Item - .' + index + "...",
+      //duration: 3000
+    //});
+    //toast.present();
 
-    this.dataService.removeItem(index)
+    //this.dataService.removeItem(index)
 
   }
 
