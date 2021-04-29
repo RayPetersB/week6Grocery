@@ -13,7 +13,7 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class GroceriesServiceProvider {
 
-  items:any = [];
+  items: any = [];
 
   dataChanged$: Observable<boolean>;
 
@@ -67,21 +67,21 @@ export class GroceriesServiceProvider {
 
   }
 
-  addItem(item){
+  addItem(item) {
     this.http.post(this.baseURL + "/api/groceries/", item).subscribe(res =>{
       this.items = res;
       this.dataChangeSubject.next(true);
-    })
+    });
     //this.items.push(item);
   }
 
 
   editItem(item,index){
-    console.log("Editing item =",item);
-    this.http.put(this.baseURL + "/api/groceries/" + item._id,item).subscribe(res =>{
+    console.log("Editing item =", item);
+    this.http.put(this.baseURL + "/api/groceries/" + item._id, item).subscribe(res => {
       this.items = res;
       this.dataChangeSubject.next(true);
-    })
+    });
     //this.items[index]=item;
 
   }

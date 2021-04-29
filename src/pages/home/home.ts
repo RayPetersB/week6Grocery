@@ -21,7 +21,7 @@ export class HomePage {
 
 
 
-  constructor( public navCtrl: NavController, public toastController: ToastController, public alertController: AlertController, public dataService: GroceriesServiceProvider, public inputDialogService: InputDialogServiceProvider,public socialSharing: SocialSharing) {
+  constructor( public navCtrl: NavController, public toastCtrl: ToastController, public alertController: AlertController, public dataService: GroceriesServiceProvider, public inputDialogService: InputDialogServiceProvider,public socialSharing: SocialSharing) {
     dataService.dataChanged$.subscribe((dataChanged: boolean) => {
       this.loadItems();
     });
@@ -35,7 +35,7 @@ ionViewDidload() {
     return this.dataService.getItems()
     .subscribe(
       items => this.items = items,
-      error => this. errorMessage= <any>error);
+      error => this.errorMessage= <any> error);
     
 
   }
@@ -56,7 +56,7 @@ ionViewDidload() {
 
   shareItem(item, index) {
     console.log("Sharing Item - ", item, index);
-    const toast = this.toastController.create({
+    const toast = this.toastCtrl.create({
       message: 'Sharing Item - .' + index + "...",
       duration: 3000
     });
@@ -80,7 +80,7 @@ ionViewDidload() {
 
   editItem(item, index) {
     console.log("Editing Item - ", item, index);
-    const toast = this.toastController.create({
+    const toast = this.toastCtrl.create({
       message: 'Editing Item - .' + index + "...",
       duration: 3000
     });

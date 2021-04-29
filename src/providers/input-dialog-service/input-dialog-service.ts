@@ -12,14 +12,14 @@ import { AlertController } from 'ionic-angular';
 @Injectable()
 export class InputDialogServiceProvider {
 
-  constructor(public alertController: AlertController, public dataService: GroceriesServiceProvider) {
+  constructor(public alertCtrl: AlertController, public dataService: GroceriesServiceProvider) {
     console.log('Hello InputDialogServiceProvider Provider');
   }
 
   
 
   showPrompt(item?, index?) {
-    let alert = this.alertController.create({
+    const prompt = this.alertCtrl.create({
       title: item ? 'Edit Item' : "Add Item",
       message: item ? "Please edit item" : "Please enter item...",
       inputs: [
@@ -66,7 +66,7 @@ export class InputDialogServiceProvider {
         }
       ]
     });
-    alert.present();
+    prompt.present();
   }
 
 
